@@ -1,0 +1,81 @@
+<h1>New Vehicle</h1>
+<form>
+  <div class="form-group">
+    <label for="make">Make</label>
+    <select
+      id="make"
+      name="make"
+      class="form-control"
+      (change)="onMakeChange()"
+      [(ngModel)]="vehicle.make"
+    >
+      <option value=""></option>
+      <option *ngFor="let make of makes" value="{{ make.id }}">
+        {{ make.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="model">Model</label>
+    <select id="model" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let model of models" [value]="model.id">
+        {{ model.name }}
+      </option>
+    </select>
+  </div>
+
+  <p>Is this vehicle registered?</p>
+  <div class="form-check-inline">
+    <label for="registerd" class="form-check-label">
+      <input
+        type="radio"
+        name="is-registerd"
+        id="registerd"
+        value="true"
+        class="form-check-input"
+      />
+      Yes
+    </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label for="not-registerd" class="radio-inline" class="form-check-label">
+      <input
+        type="radio"
+        name="is-registerd"
+        id="not-registerd"
+        value="false"
+      />
+      No
+    </label>
+  </div>
+
+  <h2>Features</h2>
+  <div *ngFor="let feature of features" class="form-check">
+    <label for="feature{{ feature.id }}" class="form-check-label">
+      <input
+        id="feature{{ feature.id }}"
+        type="checkbox"
+        class="form-check-input"
+      />
+      {{ feature.name }}
+    </label>
+  </div>
+
+  <h2>Contact</h2>
+  <div class="form-group">
+    <label for="contact-name">Name</label>
+    <input type="text" id="contact-name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="contact-email">Email</label>
+    <input type="text" id="contact-email" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="contact-phone">Phone</label>
+    <input type="text" id="contact-phone" class="form-control" />
+  </div>
+  <div class="btn btn-primary">Submit</div>
+</form>
